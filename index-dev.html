@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="UTF-8">
+    <title>Splink | Multi-Link URL Shortener</title>
+    <meta name="description" content="Combine multiple URLs into one convenient shortened link!">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <style>
+      @font-face {
+        font-family: 'Material Icons';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Material Icons'), local('MaterialIcons-Regular'), url(http://fonts.gstatic.com/s/materialicons/v21/2fcrYFNaTjcS6g4U3t-Y5UEw0lE80llgEseQY3FEmqw.woff2) format('woff2');
+      }
+    </style>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="icon" href="img/logo.png">
+
+  </head>
+  <body class="is-presenting">
+
+    <!-- Header Bar -->
+    <header class="h-bar">
+      <div class="h-bar__inner">
+        <a href="." class="h-bar__inner__home-link">
+          <img src="img/logo.png" alt="Logo" class="h-bar__inner__home-link__logo">
+          <h1 class="h-bar__inner__home-link__title">Splink
+            <span class="h-bar__inner__home-link__sub-title">Multi-Link URL Shortener</span>
+          </h1>
+        </a>
+        <a style="cursor:pointer" class="h-bar__inner__info-link" id="info-btn">
+          <i class="mi">info_outline</i>
+        </a>
+      </div>
+    </header>
+
+    <!-- Lander Tutorial -->
+    <section class="tutorial-lander" id="tutorial">
+      <h1>Welcome, this is Splink.</h1>
+      <h2>Splink let's you combine multiple URLs into one convenient shortened link.</h2>
+      <p>Click on the <strong>Edit/Create your own multi-link URL <i class="mi">edit</i></strong> button below to get started!</p>
+    </section>
+
+    <!-- Main List -->
+    <main class="m-list" id="m-list">
+
+      <!-- Link Item Template -->
+      <template id="link-item-template">
+        <a href="" target="_blank" class="m-list__link-item">
+          <div class="m-list__link-item__inner">
+            <i class="mi m-list__link-item__inner__icon">public</i>
+            <div class="m-list__link-item__inner__text">
+              <span class="m-list__link-item__inner__text__content"></span>
+            </div>
+            <button type="button" class="m-list__link-item__inner__btn">
+              <i class="mi is-presenting">open_in_new</i>
+              <i class="mi is-editing">cancel</i>
+              <i class="mi is-shortening">cancel</i>
+            </button>
+          </div>
+        </a>
+      </template>
+
+      <!-- Add Link Widget -->
+      <div class="m-list__add-widget is-not-presenting" id="m-list__add-widget">
+        <div class="m-list__add-widget__inner">
+          <i class="mi m-list__add-widget__inner__icon">public</i>
+          <input type="text" placeholder="Add a URL to shorten..." class="m-list__add-widget__inner__input" id="m-list__add-widget__inner__input">
+          <button type="button" class="m-list__add-widget__inner__btn" id="m-list__add-widget__inner__btn">
+            <i class="mi">add_circle</i>
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer Bar -->
+    <footer class="f-bar">
+      <button type="button" class="f-bar__btn" id="f-bar__btn">
+        <div class="f-bar__btn__inner">
+          <div class="f-bar__btn__inner__text">
+            <span class="f-bar__btn__inner__text__title is-presenting">Edit/Create your own multi-link URL</span>
+            <span class="f-bar__btn__inner__text__title is-editing">Combine and shorten your URLs</span>
+            <span class="f-bar__btn__inner__text__title is-shortening">
+              <span class="f-bar__btn__inner__text__title__sub-title">Contains
+                <span id="num-links-text">0</span> long URLs
+              </span>
+              <span class="f-bar__btn__inner__title__content">
+                <span id="shortened-url-pre">Your new short URL:</span>
+                <span id="shortened-url"></span>
+                <span id="shortened-url-post" hidden>➝ Copied to clipboard!</span>
+              </span>
+            </span>
+          </div>
+          <i class="mi f-bar__btn__inner__icon is-presenting">edit</i>
+          <i class="mi f-bar__btn__inner__icon is-editing">check</i>
+          <i class="mi f-bar__btn__inner__icon is-shortening">content_copy</i>
+        </div>
+      </button>
+    </footer>
+
+    <!-- Information Page -->
+    <section class="info-modal" id="info-modal" hidden>
+      <div class="info-modal__inner">
+        <a style="cursor:pointer" class="info-modal__inner__close-btn" id="close-info-btn">
+          <i class="mi">close</i>
+        </a>
+        <h1>Splink</h1>
+        <p>Splink is your tool for combining multiple URLs into one convenient shortened link!</p>
+        <h2>About</h2>
+        <p>Splink uses Google's URL Shortener <a href="https://goo.gl" target="_blank">goo.gl</a> to shorten your links, so you know everything will be safe and reliable.</p>
+        <p><i>Note: All goo.gl URLs and click analytics are public and can be accessed by anyone.</i></p>
+        <h2>Support</h2>
+        <p>Liking Splink? Support me by <a href="https://paypal.me/johnchinjew/3" target="_blank">donating!</a></p>
+        <p>
+          <a style="box-shadow:none;" href="https://flattr.com/submit/auto?fid=w70d02&url=http%3A%2F%2Fsplink.johnchinjew.com" target="_blank"><img src="//button.flattr.com/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0"></a>&nbsp;
+          <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </p>
+        <h2><3 <3 <3</h2>
+        <p>Made and used by <a href="http://twitter.com/johnchinjew" target="_blank">John Chin-Jew</a>.</p>
+      </div>
+    </section>
+
+    <script src="js/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/clipboard.js/1.6.0/clipboard.min.js" defer></script>
+    <script>
+      window.onload = function() {
+        var clipboard = new Clipboard('#f-bar__btn');
+        clipboard.on('success', function () {
+          document.querySelector("#shortened-url-pre").hidden = true;
+          document.querySelector("#shortened-url-post").hidden = false;
+        });
+      };
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-66519522-5', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+  </body>
+</html>
